@@ -35,7 +35,20 @@ export default function TabLayout() {
         name="homeTask"
         options={{
           title: 'Shopping List',
-          tabBarIcon: ({ color }) => <Icon size={28} source="cart" color={color} />,
+          tabBarIcon: ({ color }) => {
+            console.log("voici la color:",color);
+          return <Icon size={28} source="cart" color={color} />
+        },
+        }}
+      />
+      <Tabs.Screen
+        name="about"
+        options={{
+          title: 'About',
+          tabBarIcon: ({ color }) => {
+            console.log("voici la color:",color);
+          return <Icon size={28} source="information" color={color} />
+        },
         }}
       />
     </Tabs>
