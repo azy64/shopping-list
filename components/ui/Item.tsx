@@ -22,7 +22,7 @@ const Item=({onDelete,onSwipeRigth, item}:ItemProps)=>{
            time= setTimeout(()=>{
                 onDelete()
             setChecking(!checking);
-            },800)
+            },500)
             
         }
         else{
