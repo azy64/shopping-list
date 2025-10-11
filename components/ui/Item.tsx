@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import ReanimatedSwipeable, { SwipeableMethods } from 'react-native-gesture-handler/ReanimatedSwipeable';
@@ -5,29 +6,30 @@ import { Checkbox, Icon, Text } from 'react-native-paper';
 import useShoppingstore, { deleteInThePendingList, putInThePendingList, Task } from '../store/shopping';
 
 type ItemProps={
-    checked?: boolean,
-    setChecked?:Function,
     item:Task,
     onSwipeRigth?:Function,
+    onDelete: Function,
 }
-const Item=({checked,setChecked,onSwipeRigth, item}:ItemProps)=>{
+const Item=({onDelete,onSwipeRigth, item}:ItemProps)=>{
 
     const swipeRef= useRef<SwipeableMethods|null>(null);
     const [checking, setChecking]= useState(false);
     const pendingForDelete = useShoppingstore((state:any)=>state.pendingForDelete)
     useEffect(()=>{
-        //console.log("second niveau:",pending)
+        let time= null;
         if(checking){
-            console.log("checking:",checking)
             putInThePendingList(item.id);
+           time= setTimeout(()=>{
+                onDelete()
+            setChecking(!checking);
+            },500)
+            
         }
         else{
-            console.log("before delete:",pendingForDelete)
             deleteInThePendingList(item.id);
-            console.log("checking:",checking);
         } 
         return ()=>{
-
+            time && clearTimeout(time)
         }
     },[checking])
     return(
@@ -49,15 +51,21 @@ const Item=({checked,setChecked,onSwipeRigth, item}:ItemProps)=>{
                     <Checkbox
                         status={checking ? 'checked' : 'unchecked'}
                     onPress={() => {
-                        setChecked && setChecked();
                         setChecking(!checking);
                     }}
                     />
+                    {/*<IconButton icon={"delete"} size={19} iconColor='red'
+                    onPress={()=>onDelete()}/>*/}
                 </View>
                 <View style={styles.rightSide}>
                   {item.text && (
                      <Text
-                    style={{fontWeight:"bold", fontSize:18}}
+                    style={{
+                        fontSize:33,
+                        color:"#0a7ea4",
+                        fontFamily:'dancing-bold',
+                        
+                    }}
                     >
                         {item.text}
                     </Text>

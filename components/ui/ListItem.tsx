@@ -18,12 +18,12 @@ const ListItem=()=>{
                 id:Crypto.randomUUID()};
             addTask(task);
             setTextTask("");
-            console.log("successful created!")
+            //console.log("successful created!")
         }
     }
     useEffect(()=>{
-        console.log("tasks:", tasks);
-        console.log("pending tasks to delete:", pendingForDelete);
+        //console.log("tasks:", tasks);
+        //console.log("pending tasks to delete:", pendingForDelete);
     },[tasks,deleteTasks,pendingForDelete])
     return(
         <View style={styles.container}>
@@ -36,23 +36,23 @@ const ListItem=()=>{
                     <View style={styles.content}>
                         <View style={{flex:1,flexDirection:"row",borderBottomWidth:1,
                             justifyContent:"flex-start",alignItems:"center"}}>
-                            <IconButton icon={"delete-circle"} iconColor="red" size={25}
+                            <IconButton icon={"cart"} iconColor="#0a7ea4" size={25}
                             onPress={()=>{
-                                pendingForDelete.map((id:string)=>{
-                                    deleteATask(id);
-                                    deleteInThePendingList(id);
-                                })
-                                alert('group suppression!')
+                                alert('Here is your shopping list!')
                             }
                             }
                         />
-                        <Text style={{fontWeight:"bold",fontSize:18}}>My shopping list
+                        <Text style={{
+                        fontFamily:'josefin-sans',
+                            fontSize:24,color:"#0a7ea4"}}>
+                                My shopping list
                         </Text>
                         </View>
                         
                         {tasks.length>0 && (
                             tasks.map((item:Task,index:any)=>(
                                 <Item key={index} item={item}
+                                onDelete={()=>deleteATask(item.id)}
                                 onSwipeRigth={()=>{
                                     deleteATask(item.id)
                                 }}
@@ -64,14 +64,18 @@ const ListItem=()=>{
             </View>
             <View style={styles.footer}>
                 <TextInput label={"Task"}
-                style={{flex:2,flexShrink:1}}
+                style={{flex:2,flexShrink:1,fontFamily:'josefin-sans',}}
                 placeholder="put a text for the task"
                 value={textTask}
                 onChangeText={(value)=>setTextTask(value)}
                 />
-                <Button icon="cart-plus" mode="contained" 
+                <Button icon="cart-plus" mode="contained"
                 onPress={()=>createNewTask()}
-                style={{flex:1/2,height:"100%", justifyContent:"center", borderRadius:0}}>
+                style={{flex:1/2,height:"100%", 
+                justifyContent:"center",
+                 borderRadius:0,
+                 backgroundColor:"#0a7ea4",
+                 }}>
                     Add Task
                 </Button>
                 
