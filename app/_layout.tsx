@@ -20,7 +20,7 @@ export default function RootLayout() {
         
     });
     useEffect(()=>{
-      console.log("fonts:",load,error);
+      //console.log("fonts:",load,error);
     })
 
   return (

@@ -2,7 +2,6 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Icon } from 'react-native-paper';
@@ -22,7 +21,6 @@ export default function TabLayout() {
         options={{
           title: 'Shopping List',
           tabBarIcon: ({ color }) => {
-            console.log("voici la color:",color);
           return <Icon size={28} source="cart" color={color} />
         },
         }}
@@ -32,7 +30,7 @@ export default function TabLayout() {
         options={{
           title: 'About',
           tabBarIcon: ({ color }) => {
-            console.log("voici la color:",color);
+            //console.log("voici la color:",color);
           return <Icon size={28} source="information" color={color} />
         },
         }}
