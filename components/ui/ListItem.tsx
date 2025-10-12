@@ -1,9 +1,10 @@
 import logo from '@/assets/images/logo.png';
 import * as Crypto from 'expo-crypto';
+import { useRouter } from 'expo-router';
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { Button, Icon, IconButton, Text, TextInput } from "react-native-paper";
-import useShoppingstore, { addTask, deleteATask, deleteInThePendingList, Task } from "../store/shopping";
+import useShoppingstore, { addTask, deleteATask, Task } from "../store/shopping";
 import Item from "./Item";
 
 const ListItem=()=>{
@@ -11,6 +12,7 @@ const ListItem=()=>{
     const deleteTasks = useShoppingstore((state:any)=>state.deleteTasks);
     const pendingForDelete= useShoppingstore((state:any)=>state.pendingForDelete);
     const [textTask, setTextTask]= useState("");
+    const nav = useRouter();
     const createNewTask=()=>{
         if(textTask){
             const task:Task ={text:textTask, 
@@ -35,6 +37,7 @@ const ListItem=()=>{
                 <ScrollView style={{flex:1}}>
                     <View style={styles.content}>
                         <View style={{flex:1,flexDirection:"row",borderBottomWidth:1,
+                        paddingBottom:3,
                             justifyContent:"flex-start",alignItems:"center"}}>
                             <IconButton icon={"cart"} iconColor="#0a7ea4" size={25}
                             onPress={()=>{
@@ -44,7 +47,7 @@ const ListItem=()=>{
                         />
                         <Text style={{
                         fontFamily:'josefin-sans',
-                            fontSize:24,color:"#0a7ea4"}}>
+                            fontSize:22,color:"#0a7ea4"}}>
                                 My shopping list
                         </Text>
                         </View>
@@ -64,7 +67,7 @@ const ListItem=()=>{
             </View>
             <View style={styles.footer}>
                 <TextInput label={"Task"}
-                style={{flex:2,flexShrink:1,fontFamily:'josefin-sans',}}
+                style={{flex:2,flexShrink:1,fontFamily:'josefin-sans'}}
                 placeholder="put a text for the task"
                 value={textTask}
                 onChangeText={(value)=>setTextTask(value)}
@@ -99,7 +102,7 @@ const styles=StyleSheet.create({
         alignItems:"center",
         overflow:"hidden",
         flexShrink:1,
-        borderTopWidth:1,
+        borderTopWidth:0,
         borderTopColor:"#4d4b4bff",
         
     },
