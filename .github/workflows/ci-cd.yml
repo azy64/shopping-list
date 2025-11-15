@@ -1,0 +1,17 @@
+name: "ci-cd file"
+on:
+  push
+jobs:
+  lint:
+    name: "launch lint first"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/setup-node@v3
+  test:
+    name: "test run"
+    runs-on: ubuntu-latest
+    needs: [lint]
+    steps:
+      - name: "run test"
+        run: yarn test
+

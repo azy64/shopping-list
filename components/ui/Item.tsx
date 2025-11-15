@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import ReanimatedSwipeable, { SwipeableMethods } from 'react-native-gesture-handler/ReanimatedSwipeable';
 import { Checkbox, Icon, Text } from 'react-native-paper';
-import useShoppingstore, { deleteInThePendingList, putInThePendingList, Task } from '../store/shopping';
+import { deleteInThePendingList, putInThePendingList, Task } from '../store/shopping';
 
-type ItemProps={
+export type ItemProps={
     item:Task,
     onSwipeRigth?:Function,
     onDelete: Function,
@@ -14,7 +14,7 @@ const Item=({onDelete,onSwipeRigth, item}:ItemProps)=>{
 
     const swipeRef= useRef<SwipeableMethods|null>(null);
     const [checking, setChecking]= useState(false);
-    const pendingForDelete = useShoppingstore((state:any)=>state.pendingForDelete)
+    //const pendingForDelete = useShoppingstore((state:any)=>state.pendingForDelete)
     useEffect(()=>{
         let time= null;
         if(checking){
@@ -31,9 +31,10 @@ const Item=({onDelete,onSwipeRigth, item}:ItemProps)=>{
         return ()=>{
             time && clearTimeout(time)
         }
-    },[checking])
+    },[checking,onDelete,item.id])
     return(
         <ReanimatedSwipeable
+        testID='Item'
         onSwipeableOpen={()=>{
             onSwipeRigth && onSwipeRigth();
             swipeRef.current?.close();
@@ -48,7 +49,7 @@ const Item=({onDelete,onSwipeRigth, item}:ItemProps)=>{
         >
             <View style={styles.container}>
                 <View style={styles.leftSide}>
-                    <Checkbox
+                    <Checkbox testID='CheckBox'
                         status={checking ? 'checked' : 'unchecked'}
                     onPress={() => {
                         setChecking(!checking);
