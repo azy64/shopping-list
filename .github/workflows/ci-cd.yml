@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
       - name: "install modules"
-        run : yarn add
+        run : yarn
       - name: "run lint"
         run: yarn lint
   test:
