@@ -5,6 +5,9 @@ jobs:
   lint:
     name: "launch lint first"
     runs-on: "ubuntu-latest"
+    defaults:
+      run:
+        working-directory: ./shopping-list
     steps:
       - uses: actions/setup-node@v3
       - name: "install modules"
@@ -12,6 +15,9 @@ jobs:
       - name: "run lint"
         run: yarn lint
   test:
+    defaults:
+      run:
+        working-directory: ./shopping-list
     name: "test run"
     runs-on: ubuntu-latest
     needs: [lint]
