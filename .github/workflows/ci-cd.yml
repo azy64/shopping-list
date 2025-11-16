@@ -18,6 +18,8 @@ jobs:
     needs: [lint]
     steps:
       - uses: actions/checkout@v5
+      - name: "install modules"
+        run : yarn
       - run: echo "we are going to start with the test couverage by:${{github.actor}} on ${{github.ref}}"
       - name: "run test"
         run: yarn test
