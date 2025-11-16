@@ -1,6 +1,5 @@
-import logo from '@/assets/images/logo.png';
+//import logo from '@/assets/images/logo.png';
 import * as Crypto from 'expo-crypto';
-import { useRouter } from 'expo-router';
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { Button, Icon, IconButton, Text, TextInput } from "react-native-paper";
@@ -12,7 +11,6 @@ const ListItem=()=>{
     const deleteTasks = useShoppingstore((state:any)=>state.deleteTasks);
     const pendingForDelete= useShoppingstore((state:any)=>state.pendingForDelete);
     const [textTask, setTextTask]= useState("");
-    const nav = useRouter();
     const createNewTask=()=>{
         if(textTask){
             const task:Task ={text:textTask, 
@@ -31,7 +29,7 @@ const ListItem=()=>{
         <View style={styles.container}>
             <View style={styles.body}>
                 <View style={styles.bodyHeader}>
-                    <Icon source={logo} size={150}/>
+                    <Icon source={require('@/assets/images/logo.png')} size={150}/>
                 </View>
                 
                 <ScrollView style={{flex:1}}>

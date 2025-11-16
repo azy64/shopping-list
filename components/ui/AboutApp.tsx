@@ -12,7 +12,7 @@ const AboutApp = () => {
           To you, my love, I dedicate this application, an extraordinary woman,
           with a strong and fulfilled mind, generous and radiant, to you who
           shines brightly and has a loving heart that gives itself entirely to
-          love. I couldn't have dreamed of anything better for my life or for
+          love. I couldn&apos;t have dreamed of anything better for my life or for
           our future children. I am grateful to heaven for putting you on my
           path, a path that seemed devoid of presence. However, like a
           game-changing ingredient in the midst of scattered soups, heaven

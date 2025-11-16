@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="3.582">
+  <testsuite name="test/AboutApp.test.tsx" errors="0" failures="0" skipped="0" timestamp="2025-11-15T20:43:36" time="1.559" tests="2">
+    <testcase classname="test for general component: AboutApp" name="should not be null" time="0.038">
+    </testcase>
+    <testcase classname="test for general component: AboutApp" name="should not throw an exception" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="test/Item.test.tsx" errors="0" failures="0" skipped="0" timestamp="2025-11-15T20:43:36" time="3.049" tests="3">
+    <testcase classname="test for general component: Item" name="should not be null" time="0.054">
+    </testcase>
+    <testcase classname="test for general component: Item" name="should match an exception" time="0.015">
+    </testcase>
+    <testcase classname="test for general component: Item" name="should have CheckBox element" time="0.015">
+    </testcase>
+  </testsuite>
+</testsuites>
